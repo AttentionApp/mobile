@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">AttentionApp</string>
+
+    <!--Login-->
+    <string name="et_email">Correo electronico</string>
+    <string name="et_password">Contraseña</string>
+    <string name="btn_login">Iniciar Sesion</string>
+    <string name="tv_createAccount">No tengo una cuenta</string>
+
+    <!--Create Account-->
+    <string name="et_first_name">Nombres</string>
+    <string name="et_last_name">Apellidos</string>
+    <string name="et_re_password">Reingresar Contraseña</string>
+    <string name="tv_accept_terms">Al crear una cuenta acepta los terminos y condiciones de nuestro servicio</string>
+    <string name="btn_register">Registrar</string>
+
 </resources>
