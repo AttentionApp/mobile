@@ -1,4 +1,4 @@
-package pe.edu.upc.attentionapp.activities
+package pe.edu.upc.attentionapp.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
