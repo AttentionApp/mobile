@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 
-class CreateAccount : AppCompatActivity() {
+class CreateAccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

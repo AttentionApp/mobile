@@ -14,4 +14,7 @@
     <string name="tv_accept_terms">Al crear una cuenta acepta los terminos y condiciones de nuestro servicio</string>
     <string name="btn_register">Registrar</string>
 
+    <!--Main-->
+    <string name="btn_create_account">Crear una cuenta</string>
+
 </resources>
