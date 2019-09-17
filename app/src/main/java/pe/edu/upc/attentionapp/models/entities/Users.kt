@@ -1,6 +1,7 @@
-package pe.edu.upc.attentionapp.models
+package pe.edu.upc.attentionapp.models.entities
 
 import com.google.gson.annotations.SerializedName
+import pe.edu.upc.attentionapp.models.entities.Customer
 
 class Users {
 
