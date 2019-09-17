@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         if(etLOEmail.text!!.isEmpty()){
             Toast.makeText(this,"Correo Electrónico es requerido",Toast.LENGTH_SHORT).show()
         }
-        if(etLOPassword.text!!.isEmpty()){
+        if(etCAEmail.text!!.isEmpty()){
             Toast.makeText(this,"Contraseña es requerida",Toast.LENGTH_SHORT).show()
         }
 
