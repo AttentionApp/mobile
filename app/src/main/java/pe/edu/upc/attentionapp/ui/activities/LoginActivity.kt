@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_create_account.*
 import kotlinx.android.synthetic.main.activity_login.*
 import pe.edu.upc.attentionapp.R
 
@@ -28,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         if(etLOEmail.text!!.isEmpty()){
             Toast.makeText(this,"Correo Electrónico es requerido",Toast.LENGTH_SHORT).show()
         }
-        if(etLOPassword.text!!.isEmpty()){
+        if(etCAEmail.text!!.isEmpty()){
             Toast.makeText(this,"Contraseña es requerida",Toast.LENGTH_SHORT).show()
         }
 
