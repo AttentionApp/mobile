@@ -1,9 +1,8 @@
-package pe.edu.upc.attentionapp
+package pe.edu.upc.attentionapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
+import pe.edu.upc.attentionapp.R
 
 class CreateAccountActivity : AppCompatActivity() {
 

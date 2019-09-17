@@ -1,9 +1,10 @@
-package pe.edu.upc.attentionapp
+package pe.edu.upc.attentionapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import pe.edu.upc.attentionapp.R
 
 class MainActivity : AppCompatActivity() {
 
