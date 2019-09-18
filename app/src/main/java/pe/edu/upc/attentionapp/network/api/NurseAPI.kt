@@ -1,14 +1,14 @@
-package pe.edu.upc.attentionapp.api.services
+package pe.edu.upc.attentionapp.network.api
 
-import pe.edu.upc.attentionapp.api.dto.response.common.CollectionResponse
-import pe.edu.upc.attentionapp.api.dto.response.common.DataResponse
-import pe.edu.upc.attentionapp.api.dto.response.common.PostResponse
-import pe.edu.upc.attentionapp.api.dto.response.common.StatusResponse
-import pe.edu.upc.attentionapp.models.entities.Nurse
+import pe.edu.upc.attentionapp.network.responses.common.CollectionResponse
+import pe.edu.upc.attentionapp.network.responses.common.DataResponse
+import pe.edu.upc.attentionapp.network.responses.common.PostResponse
+import pe.edu.upc.attentionapp.network.responses.common.StatusResponse
+import pe.edu.upc.attentionapp.models.Nurse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface NurseService {
+interface NurseAPI {
     @GET("nurses")
     fun findAll(): Call<CollectionResponse<Nurse>>
 
