@@ -1,4 +1,4 @@
-package pe.edu.upc.attentionapp.models.entities
+package pe.edu.upc.attentionapp.models
 
 import com.google.gson.annotations.SerializedName
 

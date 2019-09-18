@@ -1,4 +1,4 @@
-package pe.edu.upc.attentionapp.ui.activities
+package pe.edu.upc.attentionapp.controllers.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,18 +22,5 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        userLogin()
     }
-
-    private fun userLogin() {
-        if(etLOEmail.text!!.isEmpty()){
-            Toast.makeText(this,"Correo Electrónico es requerido",Toast.LENGTH_SHORT).show()
-        }
-        if(etCAEmail.text!!.isEmpty()){
-            Toast.makeText(this,"Contraseña es requerida",Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-
 }

@@ -1,15 +1,14 @@
-package pe.edu.upc.attentionapp.api.dto.response.common
+package pe.edu.upc.attentionapp.network.responses.common
 
 import com.google.gson.annotations.SerializedName
 
-class DataResponse <T> (){
-
+class CollectionResponse<T>{
     @SerializedName("success")
     var success: Boolean = false
 
     @SerializedName("numRows")
     var numRows: Int = 0
 
-    @SerializedName("data")
-    var data: T? = null
+    @SerializedName("rows")
+    lateinit var rows: ArrayList<T>
 }

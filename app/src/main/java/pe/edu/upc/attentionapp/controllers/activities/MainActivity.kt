@@ -1,4 +1,4 @@
-package pe.edu.upc.attentionapp.ui.activities
+package pe.edu.upc.attentionapp.controllers.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -21,8 +21,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
-
 
 }

@@ -1,4 +1,4 @@
-package pe.edu.upc.attentionapp.api.dto.response.common
+package pe.edu.upc.attentionapp.network.responses.common
 
 import com.google.gson.annotations.SerializedName
 
