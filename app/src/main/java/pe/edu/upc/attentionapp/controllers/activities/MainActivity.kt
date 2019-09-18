@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btMALogin.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, NursesAvailableActivity::class.java)
             startActivity(intent)
         }
     }
