@@ -1,10 +1,13 @@
-package pe.edu.upc.attentionapp.controllers.activities
+package pe.edu.upc.attentionapp.controllers.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.activity_nurses_available.*
+import kotlinx.android.synthetic.main.fragment_nurses.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.adapters.NursesAdapter
 import pe.edu.upc.attentionapp.models.Nurse
@@ -17,19 +20,25 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NursesAvailableActivity : AppCompatActivity() {
+class NursesFragment : Fragment() {
 
     lateinit var adapter : NursesAdapter
     var nurses = ArrayList<Nurse>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nurses_available)
-
-        getNursesAvailable()
-
-        nursesRecyclerView.layoutManager = GridLayoutManager(this,2)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_nurses,container,false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getNursesAvailable()
+        nursesRecyclerView.layoutManager = GridLayoutManager(view.context,2)
+    }
+
 
     private fun getNursesAvailable() {
         val retrofit = Retrofit.Builder()
@@ -59,6 +68,4 @@ class NursesAvailableActivity : AppCompatActivity() {
 
         })
     }
-
-
 }

@@ -30,8 +30,6 @@ class NursesAdapter(var nurses: ArrayList<Nurse>) : RecyclerView.Adapter<NursesA
         holder.bindTo(nurses[position])
     }
 
-
-
     override fun getItemCount(): Int {
         return nurses.size
     }
