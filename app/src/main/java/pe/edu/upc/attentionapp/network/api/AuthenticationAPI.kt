@@ -1,10 +1,17 @@
 package pe.edu.upc.attentionapp.network.api
 
-import pe.edu.upc.attentionapp.network.responses.LoginResponse
+import pe.edu.upc.attentionapp.models.User
+import pe.edu.upc.attentionapp.network.responses.UserResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthenticationAPI {
+
+    @POST("auth/signup")
+    fun register(@Body user:User): Call<UserResponse>
+
+    @POST("auth/login")
+    fun login(@Body user:User): Call<UserResponse>
 
 }

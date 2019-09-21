@@ -10,10 +10,5 @@ class Customer{
     @SerializedName("last_name")
     var lastName:String=""
 
-    @SerializedName("short_name")
-    var shortName:String=""
-
-    @SerializedName("gender")
-    var gender:String=""
 
 }
