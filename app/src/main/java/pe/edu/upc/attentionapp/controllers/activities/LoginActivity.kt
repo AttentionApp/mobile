@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
 
                     if(response.isSuccessful){
-                        if(response.body()!!.success != null){
+                        if(response.body()!!.success!=null){
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
 
@@ -84,11 +84,9 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     else{
-                        Toast.makeText(this@LoginActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity,"Usuario no existe",Toast.LENGTH_SHORT).show()
                     }
-
                 }
-
             })
         }
 

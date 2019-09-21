@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class UserResponse {
 
     @SerializedName("success")
-    var success: Boolean=true
+    var success: Boolean?=false
 
     @SerializedName("message")
     var message: String = ""

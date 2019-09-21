@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
+import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
+import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_create_account.*
 import kotlinx.android.synthetic.main.activity_main.*
 import pe.edu.upc.attentionapp.R
@@ -37,46 +40,67 @@ class CreateAccountActivity : AppCompatActivity() {
         authenticationAPI=retrofit!!.create<AuthenticationAPI>(AuthenticationAPI::class.java)
 
 
-        btMACreateAccount.setOnClickListener{
+        btCARegister.setOnClickListener{
             registerPost(etCAFirstName.text.toString(),etCALastName.text.toString(),etCAEmail.text.toString(),etCAPassword.text.toString())
         }
 
 
     }
 
-    fun validate(vararg fields:String): Boolean {
-        for (item in fields){
-            if(item.equals("")){
-                return false
-            }
-        }
-        return true
-    }
-
     fun registerPost(firstName:String,lastName:String,email:String , password:String){
 
+        var isFirsName=firstName.validator()
+            .nonEmpty()
+            .addErrorCallback {
+                etCAFirstName.error = "Ingresa tu Nombre"
+            }
+            .check()
 
-        if (validate(firstName,lastName,email,password)){
-            Toast.makeText(this@CreateAccountActivity,"Ingresa campos requeridos", Toast.LENGTH_SHORT).show()
+        var isLastName=lastName.validator()
+            .nonEmpty()
+            .addErrorCallback {
+                etCALastName.error = "Ingresa tu Apellido"
+            }
+            .check()
+
+        var isEmail=email.validEmail(){
+            etCAEmail.error = "Ingresa el correo electronico"
         }
 
-        val registerCall=authenticationAPI.register(User(firstName,lastName,email,password))
-
-        registerCall.enqueue(object:Callback<UserResponse>{
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                Toast.makeText(this@CreateAccountActivity,"Error de Ingresos", Toast.LENGTH_SHORT).show()
+        var isPassword=password.validator()
+            .nonEmpty()
+            .addErrorCallback {
+                etCAPassword.error = "Ingresa la contraseña"
             }
+            .check()
 
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if(response.body()!!.success != null){
-                    val intent = Intent(this@CreateAccountActivity, HomeActivity::class.java)
-                    startActivity(intent)
 
-                }else{
-                    Toast.makeText(this@CreateAccountActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()
+        if(isFirsName&&isLastName&&isEmail&&isPassword){
+            val registerCall=authenticationAPI.register(User(firstName,lastName,email,password))
+
+            registerCall.enqueue(object:Callback<UserResponse>{
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Toast.makeText(this@CreateAccountActivity,"Error", Toast.LENGTH_SHORT).show()
                 }
-            }
-        })
+
+                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                    if(response.isSuccessful){
+                        if(response.body()!!.success!=null){
+                            val intent = Intent(this@CreateAccountActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            Toast.makeText(this@CreateAccountActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    else{
+                        Toast.makeText(this@CreateAccountActivity,"Usuario ya existe",Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            })
+        }
+
 
     }
 
