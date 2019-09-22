@@ -19,8 +19,8 @@
 
     <!--Home-->
     <string name="title_home">Home</string>
-    <string name="title_settings">Settings</string>
-    <string name="tile_favorites">Favorites</string>
+    <string name="title_account">Mi cuenta</string>
+    <string name="tile_record">Historial</string>
     <string name="title_nurses">Enfermeras</string>
 
 </resources>
