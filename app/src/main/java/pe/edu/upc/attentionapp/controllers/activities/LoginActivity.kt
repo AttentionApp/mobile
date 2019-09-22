@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
             .check()
 
         if(isEmail&&isPassword){
-            val loginCall = authenticationAPI.login(User(null,null,email,password))
+            val loginCall = authenticationAPI.login(User(null,null,email,password,null,null))
             loginCall.enqueue(object: Callback<AuthResponse>{
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
 
@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
 
                     if(response.isSuccessful){
                         if(response.body()!!.success!=null){
+
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
 

@@ -75,7 +75,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
 
         if(isFirsName&&isLastName&&isEmail&&isPassword){
-            val registerCall=authenticationAPI.register(User(firstName,lastName,email,password))
+            val registerCall=authenticationAPI.register(User(firstName,lastName,email,password,null,null))
 
             registerCall.enqueue(object:Callback<AuthResponse>{
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
