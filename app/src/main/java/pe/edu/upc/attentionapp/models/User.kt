@@ -17,6 +17,10 @@ data class User (
     var password:String?,
 
     @SerializedName("short_name")
-    var shortName: String?
+    var shortName: String?,
+
+    @SerializedName("thumbnail_image")
+    var thumbnailImage: String 
+
 
 )

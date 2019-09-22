@@ -17,7 +17,4 @@ class AuthResponse {
     @SerializedName("userData")
     var dataUser: User? = null
 
-    @SerializedName("thumbnail_image")
-    var thumbnailImage: String = ""
-
 }
