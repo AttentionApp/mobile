@@ -8,11 +8,10 @@ import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_create_account.*
-import kotlinx.android.synthetic.main.activity_main.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.models.User
 import pe.edu.upc.attentionapp.network.api.AuthenticationAPI
-import pe.edu.upc.attentionapp.network.responses.UserResponse
+import pe.edu.upc.attentionapp.network.responses.AuthResponse
 import pe.edu.upc.attentionapp.util.AttentionAppConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -78,12 +77,12 @@ class CreateAccountActivity : AppCompatActivity() {
         if(isFirsName&&isLastName&&isEmail&&isPassword){
             val registerCall=authenticationAPI.register(User(firstName,lastName,email,password))
 
-            registerCall.enqueue(object:Callback<UserResponse>{
-                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            registerCall.enqueue(object:Callback<AuthResponse>{
+                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                     Toast.makeText(this@CreateAccountActivity,"Error", Toast.LENGTH_SHORT).show()
                 }
 
-                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                     if(response.isSuccessful){
                         if(response.body()!!.success!=null){
                             val intent = Intent(this@CreateAccountActivity, HomeActivity::class.java)

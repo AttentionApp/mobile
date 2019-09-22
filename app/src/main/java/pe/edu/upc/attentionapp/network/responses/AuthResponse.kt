@@ -2,7 +2,7 @@ package pe.edu.upc.attentionapp.network.responses
 
 import com.google.gson.annotations.SerializedName
 
-class UserResponse {
+class AuthResponse {
 
     @SerializedName("success")
     var success: Boolean?=false
@@ -12,4 +12,5 @@ class UserResponse {
 
     @SerializedName("token")
     var token: String = ""
+
 }
