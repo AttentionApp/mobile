@@ -10,7 +10,7 @@ import retrofit2.http.*
 
 interface NurseAPI {
     @GET("nurses")
-    fun findAll(): Call<CollectionResponse<Nurse>>
+    fun findAll(@Header("authorization") authHeader: String): Call<CollectionResponse<Nurse>>
 
     @GET("nurses/{id}")
     fun findById(@Path("id") id: Int): Call<DataResponse<Nurse>>
