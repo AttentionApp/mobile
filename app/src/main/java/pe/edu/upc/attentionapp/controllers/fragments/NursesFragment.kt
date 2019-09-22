@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NursesFragment : Fragment() {
 
     lateinit var adapter : NursesAdapter
-    var nurses = ArrayList<Nurse>()
+    var nurses: List<Nurse> = ArrayList<Nurse>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

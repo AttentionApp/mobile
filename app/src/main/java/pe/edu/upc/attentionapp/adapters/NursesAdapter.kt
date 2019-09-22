@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_nurse.view.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.models.Nurse
 
-class NursesAdapter(var nurses: ArrayList<Nurse>) : RecyclerView.Adapter<NursesAdapter.NurseViewHolder>(){
+class NursesAdapter(var nurses: List<Nurse>) : RecyclerView.Adapter<NursesAdapter.NurseViewHolder>(){
 
     inner class NurseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemNurse = itemView.itemNurse
