@@ -75,10 +75,8 @@ class LoginActivity : AppCompatActivity() {
 
                     if(response.isSuccessful){
                         if(response.body()!!.success!=null){
-
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
-
                         }else{
                             Toast.makeText(this@LoginActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()
                         }
