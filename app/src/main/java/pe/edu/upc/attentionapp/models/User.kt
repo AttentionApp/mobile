@@ -20,7 +20,7 @@ data class User (
     var shortName: String?,
 
     @SerializedName("thumbnail_image")
-    var thumbnailImage: String 
+    var thumbnailImage: String?
 
 
 )
