@@ -7,9 +7,9 @@
             android:title="@string/title_home"/>
 
     <item
-            android:id="@+id/navigation_sources"
+            android:id="@+id/navigation_nurses"
             android:icon="@drawable/ic_import_contacts_black_24dp"
-            android:title="@string/title_sources"/>
+            android:title="@string/title_nurses"/>
 
     <item
             android:id="@+id/navigation_favorites"

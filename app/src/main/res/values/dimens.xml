@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="thumbnail_dimen">64dp</dimen>
+    <dimen name="nurse_cardradius">16dp</dimen>
+    <dimen name="nurse_cardelevation">5dp</dimen>
+    <dimen name="nurse_card_maxelevation">2dp</dimen>
+</resources>

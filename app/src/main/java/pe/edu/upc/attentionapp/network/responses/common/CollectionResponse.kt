@@ -10,5 +10,5 @@ class CollectionResponse<T>{
     var numRows: Int = 0
 
     @SerializedName("rows")
-    lateinit var rows: ArrayList<T>
+    lateinit var rows: List<T>
 }

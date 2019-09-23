@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.controllers.fragments.HomeFragment
+import pe.edu.upc.attentionapp.controllers.fragments.NursesFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -27,8 +28,8 @@ class HomeActivity : AppCompatActivity() {
     private fun getFragmentFor(item: MenuItem): Fragment {
         return when(item.itemId) {
             R.id.navigation_home -> HomeFragment()
-            /*R.id.navigation_sources -> SourcesFragment()
-            R.id.navigation_favorites -> FavoritesFragment()
+            R.id.navigation_nurses -> NursesFragment()
+            /*R.id.navigation_favorites -> FavoritesFragment()
             R.id.navigation_settings -> SettingsFragment()
             */else -> HomeFragment()
         }
