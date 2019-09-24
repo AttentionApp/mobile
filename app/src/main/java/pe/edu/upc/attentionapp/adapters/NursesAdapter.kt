@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_nurse.view.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.models.Nurse
@@ -16,6 +17,11 @@ class NursesAdapter(var nurses: List<Nurse>) : RecyclerView.Adapter<NursesAdapte
         val nurseImageView = itemView.nurseImageView
         fun bindTo(nurse: Nurse){
             shortNameTextView.text = nurse.shortName
+            Picasso
+                .get()
+                .load(nurse.thumbnailImage)
+                .placeholder(R.drawable.ic_user_placeholder_48dp)
+                .into(nurseImageView)
             itemNurse.setOnClickListener{
                 TODO("not implemented")
             }

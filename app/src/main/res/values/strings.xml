@@ -22,5 +22,6 @@
     <string name="title_account">Mi cuenta</string>
     <string name="tile_record">Historial</string>
     <string name="title_nurses">Enfermeras</string>
+    <string name="nurse_image_description">Foto de la enfermera</string>
 
 </resources>
