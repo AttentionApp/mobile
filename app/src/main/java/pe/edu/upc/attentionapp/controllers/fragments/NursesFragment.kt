@@ -1,5 +1,7 @@
 package pe.edu.upc.attentionapp.controllers.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +16,8 @@ import pe.edu.upc.attentionapp.models.Nurse
 import pe.edu.upc.attentionapp.network.api.NurseAPI
 import pe.edu.upc.attentionapp.network.responses.common.CollectionResponse
 import pe.edu.upc.attentionapp.util.AttentionAppConfig
+import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_FIELD_TOKEN
+import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_NAME
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +25,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NursesFragment : Fragment() {
+
+    private lateinit var sharedPreferences: SharedPreferences
 
     lateinit var adapter : NursesAdapter
     var nurses: List<Nurse> = ArrayList<Nurse>()
@@ -35,6 +41,7 @@ class NursesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferences = view.context.getSharedPreferences(SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE)
         getNursesAvailable()
         nursesRecyclerView.layoutManager = GridLayoutManager(view.context,2)
     }
@@ -47,7 +54,7 @@ class NursesFragment : Fragment() {
             .build()
 
         val nurseAPI = retrofit.create(NurseAPI::class.java)
-        val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsdmFyYWRvQGdtYWlsLmNvbSIsImlhdCI6MTU2ODgzNjI1MCwiZXhwIjoxNTY4ODM2MjUwfQ.M7Sivfon1fzW2QEUDpPyqfnhaXByvEy9AWX-p1-YvUg"
+        val token = sharedPreferences.getString(SHARED_PREFERENCES_FIELD_TOKEN,"")
         val nurseCall = nurseAPI.findAll("Bearer $token")
 
         nurseCall.enqueue(object: Callback<CollectionResponse<Nurse>> {

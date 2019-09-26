@@ -1,6 +1,8 @@
 package pe.edu.upc.attentionapp.controllers.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,6 +15,8 @@ import pe.edu.upc.attentionapp.models.User
 import pe.edu.upc.attentionapp.network.api.AuthenticationAPI
 import pe.edu.upc.attentionapp.network.responses.AuthResponse
 import pe.edu.upc.attentionapp.util.AttentionAppConfig
+import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_FIELD_TOKEN
+import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_NAME
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,8 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
 
-
     private lateinit var authenticationAPI:AuthenticationAPI
+
+    private lateinit var sharedPreferences:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,8 @@ class LoginActivity : AppCompatActivity() {
             .baseUrl(AttentionAppConfig.API_V1_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
         authenticationAPI=retrofit!!.create<AuthenticationAPI>(AuthenticationAPI::class.java)
 
@@ -76,7 +83,16 @@ class LoginActivity : AppCompatActivity() {
                     if(response.isSuccessful){
                         if(response.body()!!.success!=null){
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+
+                            val token = response.body()!!.token
+
+                            val editor = sharedPreferences.edit()
+
+                            editor.putString(SHARED_PREFERENCES_FIELD_TOKEN,token)
+                            editor.commit()
+
                             startActivity(intent)
+
                         }else{
                             Toast.makeText(this@LoginActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()
                         }
