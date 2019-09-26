@@ -65,12 +65,15 @@
 
     <Button
         android:id="@+id/btNPBook"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:layout_marginBottom="52dp"
-        android:text="Button"
+        android:text="Reservar"
+        android:textColor="@color/colorBotonWhite"
+        android:backgroundTint="@color/colorBotonBlue"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
