@@ -1,8 +1,10 @@
 package pe.edu.upc.attentionapp.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class Nurse {
+
+class Nurse : Serializable {
     @SerializedName("first_name")
     var firstName = ""
 

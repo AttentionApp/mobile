@@ -1,6 +1,8 @@
 package pe.edu.upc.attentionapp.controllers.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -22,6 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CreateAccountActivity : AppCompatActivity() {
 
     private lateinit var authenticationAPI:AuthenticationAPI
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,8 @@ class CreateAccountActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+
+        sharedPreferences = getSharedPreferences(AttentionAppConfig.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
         authenticationAPI=retrofit!!.create<AuthenticationAPI>(AuthenticationAPI::class.java)
 
@@ -86,7 +91,15 @@ class CreateAccountActivity : AppCompatActivity() {
                     if(response.isSuccessful){
                         if(response.body()!!.success!=null){
                             val intent = Intent(this@CreateAccountActivity, HomeActivity::class.java)
+
+                            val token = response.body()!!.token
+                            val editor = sharedPreferences.edit()
+
+                            editor.putString(AttentionAppConfig.SHARED_PREFERENCES_FIELD_TOKEN,token)
+                            editor.commit()
+
                             startActivity(intent)
+                            finish()
                         }
                         else{
                             Toast.makeText(this@CreateAccountActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()

@@ -23,5 +23,12 @@
     <string name="tile_record">Historial</string>
     <string name="title_nurses">Enfermeras</string>
     <string name="nurse_image_description">Foto de la enfermera</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="shortname">ShortName</string>
+    <string name="email">Email</string>
+    <string name="guardar">Guardar</string>
+    <string name="salir">Salir</string>
+    <string name="contratar">Contratar</string>
 
 </resources>

@@ -35,9 +35,6 @@ class LoginActivity : AppCompatActivity() {
 
         tvCreateAccount.setOnClickListener{
             val intent = Intent(this, CreateAccountActivity::class.java)
-            // To pass any data to next activity
-            //intent.putExtra("keyIdentifier", value)
-            // start your next activity
             startActivity(intent)
         }
 
@@ -92,6 +89,7 @@ class LoginActivity : AppCompatActivity() {
                             editor.commit()
 
                             startActivity(intent)
+                            finish()
 
                         }else{
                             Toast.makeText(this@LoginActivity,"Ocurrio un error",Toast.LENGTH_SHORT).show()

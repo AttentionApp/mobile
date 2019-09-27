@@ -67,8 +67,9 @@ class NursesFragment : Fragment() {
                 response: Response<CollectionResponse<Nurse>>
             ) {
                 if(response.isSuccessful){
+                    val context: Context = context!!
                     nurses = response.body()!!.rows
-                    adapter = NursesAdapter(nurses)
+                    adapter = NursesAdapter(nurses,context)
                     nursesRecyclerView.adapter = adapter
                 }
             }
