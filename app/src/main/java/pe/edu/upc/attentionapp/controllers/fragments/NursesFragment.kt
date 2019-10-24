@@ -1,6 +1,7 @@
 package pe.edu.upc.attentionapp.controllers.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_nurses.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.adapters.NursesAdapter
+import pe.edu.upc.attentionapp.controllers.activities.FindNurseActivity
 import pe.edu.upc.attentionapp.models.Nurse
 import pe.edu.upc.attentionapp.network.api.NurseAPI
 import pe.edu.upc.attentionapp.network.responses.common.CollectionResponse
@@ -43,7 +45,11 @@ class NursesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = view.context.getSharedPreferences(SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE)
         getNursesAvailable()
-        nursesRecyclerView.layoutManager = GridLayoutManager(view.context,2)
+        rvCONurses.layoutManager = GridLayoutManager(view.context,2)
+        btNUContract.setOnClickListener {
+            val intent = Intent(context,FindNurseActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
@@ -70,7 +76,7 @@ class NursesFragment : Fragment() {
                     val context: Context = context!!
                     nurses = response.body()!!.rows
                     adapter = NursesAdapter(nurses,context)
-                    nursesRecyclerView.adapter = adapter
+                    rvCONurses.adapter = adapter
                 }
             }
 

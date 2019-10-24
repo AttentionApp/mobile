@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
             android:id="@+id/ivFPImage"
             android:layout_width="208dp"
@@ -20,71 +21,31 @@
             android:src="@drawable/ic_account_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tvFPName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center_horizontal"
-            android:text="@string/nombre"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivFPImage"
-            app:layout_constraintVertical_bias="0.025" />
-
-        <TextView
-            android:id="@+id/tvFPLastName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxHeight="150dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:hint="@string/apellido"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFPName"
-            app:layout_constraintVertical_bias="0.050" />
+            app:layout_constraintVertical_bias="0.072" />
 
         <TextView
             android:id="@+id/tvFPShortName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:hint="@string/shortname"
             android:maxHeight="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFPLastName"
-            app:layout_constraintVertical_bias="0.075" />
+            app:layout_constraintTop_toBottomOf="@+id/ivFPImage"
+            app:layout_constraintVertical_bias="0.124" />
 
         <TextView
             android:id="@+id/tvFPEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:hint="@string/email"
             android:maxHeight="150dp"
@@ -94,48 +55,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFPShortName"
+            app:layout_constraintTop_toBottomOf="@+id/tvFPShortName"
             app:layout_constraintVertical_bias="0.100" />
 
         <Button
-            android:id="@+id/btFPSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/colorBotonBlue"
-            android:textColor="@color/colorBotonWhite"
-            android:text="@string/guardar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.982" />
-
-        <Button
             android:id="@+id/btFPSignOut"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:backgroundTint="@color/colorBotonBlue"
-            android:textColor="@color/colorBotonWhite"
             android:text="@string/salir"
+            android:textColor="@color/colorBotonWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.028"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.982" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFPEmail"
+            app:layout_constraintVertical_bias="0.202" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </android.widget.FrameLayout>

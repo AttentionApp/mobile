@@ -85,8 +85,6 @@ class ProfileFragment: Fragment() {
                     var image = user!!.thumbnailImage.toString()
 
                     tvFPEmail.setText(email)
-                    tvFPName.setText(firtsName)
-                    tvFPLastName.setText(lastName)
                     tvFPShortName.setText(shortName)
 
 

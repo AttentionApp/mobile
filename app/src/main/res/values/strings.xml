@@ -30,5 +30,19 @@
     <string name="guardar">Guardar</string>
     <string name="salir">Salir</string>
     <string name="contratar">Contratar</string>
+    <string name="tipo_de_enfermera">Tipo de Enfermera:</string>
+    <string name="licenciada">Licenciada</string>
+    <string name="number">123456789</string>
+    <string name="dni">DNI</string>
+    <string name="genero_label">Género</string>
+    <string name="gender">Femenino</string>
+    <string name="descripcion">Pequeña descripcion</string>
+    <string name="descripcion_label">Descripción</string>
+    <string name="escoger_dia">Escoger dia</string>
+    <string name="day">xx/xx/xxxx</string>
+    <string name="hora_de_reserva">Hora de reserva:</string>
+    <string name="numero_de_horas">Numero de horas</string>
+    <string name="seleccionar_dia">Seleccionar Dia</string>
+    <string name="gerenic_day">20/10/2019</string>
 
 </resources>

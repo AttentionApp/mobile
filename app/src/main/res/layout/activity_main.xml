@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivMALogo"
-        android:layout_width="340dp"
-        android:layout_height="421dp"
+        android:layout_width="265dp"
+        android:layout_height="317dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/ic_logo"
         app:layout_constraintEnd_toEndOf="parent"
