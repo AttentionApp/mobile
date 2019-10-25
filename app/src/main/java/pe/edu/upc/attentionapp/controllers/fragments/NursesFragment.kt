@@ -45,8 +45,8 @@ class NursesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = view.context.getSharedPreferences(SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE)
         getNursesAvailable()
-        rvCONurses.layoutManager = GridLayoutManager(view.context,2)
-        btNUContract.setOnClickListener {
+        rvFNNurses.layoutManager = GridLayoutManager(view.context,2)
+        fbFNContract.setOnClickListener {
             val intent = Intent(context,FindNurseActivity::class.java)
             startActivity(intent)
         }
@@ -76,7 +76,7 @@ class NursesFragment : Fragment() {
                     val context: Context = context!!
                     nurses = response.body()!!.rows
                     adapter = NursesAdapter(nurses,context)
-                    rvCONurses.adapter = adapter
+                    rvFNNurses.adapter = adapter
                 }
             }
 

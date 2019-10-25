@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import pe.edu.upc.attentionapp.R
+import pe.edu.upc.attentionapp.controllers.activities.CardsActivity
 import pe.edu.upc.attentionapp.controllers.activities.MainActivity
 import pe.edu.upc.attentionapp.models.User
 import pe.edu.upc.attentionapp.network.api.AuthenticationAPI
@@ -53,6 +54,10 @@ class ProfileFragment: Fragment() {
             activity!!.finish()
         }
 
+        btFPSeeCards.setOnClickListener {
+            seeCards()
+        }
+
     }
 
     private fun getData(){
@@ -79,10 +84,7 @@ class ProfileFragment: Fragment() {
 
                     var user = response.body()!!.data
                     var email = user!!.email.toString()
-                    var firtsName = user!!.firstName.toString()
-                    var lastName = user!!.lastName.toString()
-                    var shortName = user!!.shortName.toString()
-                    var image = user!!.thumbnailImage.toString()
+                    var shortName = user.shortName.toString()
 
                     tvFPEmail.setText(email)
                     tvFPShortName.setText(shortName)
@@ -92,6 +94,11 @@ class ProfileFragment: Fragment() {
 
             }
         })
+    }
+
+    private fun seeCards(){
+        val intent = Intent(context, CardsActivity::class.java)
+        startActivity(intent)
     }
 
 }

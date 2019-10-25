@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controllers.activities.ContractActivity"
-            android:parentActivityName=".controllers.activities.FindNurseActivity"></activity>
-        <activity android:name=".controllers.activities.FindNurseActivity"
-            android:parentActivityName=".controllers.activities.HomeActivity"/>
+        <activity android:name=".controllers.activities.CardsActivity"></activity>
+        <activity
+            android:name=".controllers.activities.ContractActivity"
+            android:parentActivityName=".controllers.activities.FindNurseActivity" />
+        <activity
+            android:name=".controllers.activities.FindNurseActivity"
+            android:parentActivityName=".controllers.activities.HomeActivity" />
         <activity android:name=".controllers.activities.NurseProfileActivity" />
         <activity android:name=".controllers.activities.HomeActivity" />
         <activity

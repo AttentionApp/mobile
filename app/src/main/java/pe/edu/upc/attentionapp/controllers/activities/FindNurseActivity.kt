@@ -34,7 +34,7 @@ class FindNurseActivity : AppCompatActivity() {
 
          btFNPickDate.setOnClickListener {
             val datePick=
-                DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                DatePickerDialog(this,DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
                 tvFNDate.setText(""+mDay+"/"+(mMonth+1)+"/"+mYear)
             },year,month,day)
 

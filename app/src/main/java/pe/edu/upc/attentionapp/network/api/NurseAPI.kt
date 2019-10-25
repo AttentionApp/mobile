@@ -12,6 +12,9 @@ interface NurseAPI {
     @GET("nurses")
     fun findAll(@Header("authorization") authHeader: String): Call<CollectionResponse<Nurse>>
 
+    @GET("nurses/filter")
+    fun filter(@Header("authorization") authHeader: String): Call<CollectionResponse<Nurse>>
+
     @GET("nurses/{id}")
     fun findById(@Path("id") id: Int): Call<DataResponse<Nurse>>
 
@@ -23,4 +26,7 @@ interface NurseAPI {
 
     @DELETE("nurses/{id}")
     fun delete(@Path("id") id: Int): Call<StatusResponse>
+
+
+
 }
