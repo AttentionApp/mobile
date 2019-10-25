@@ -15,6 +15,7 @@ import pe.edu.upc.attentionapp.models.User
 import pe.edu.upc.attentionapp.network.api.AuthenticationAPI
 import pe.edu.upc.attentionapp.network.responses.AuthResponse
 import pe.edu.upc.attentionapp.util.AttentionAppConfig
+import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_FIELD_IDCUSTOMER
 import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_FIELD_TOKEN
 import pe.edu.upc.attentionapp.util.AttentionAppConfig.Companion.SHARED_PREFERENCES_NAME
 import retrofit2.Call
@@ -67,11 +68,11 @@ class LoginActivity : AppCompatActivity() {
             .check()
 
         if(isEmail&&isPassword){
-            val loginCall = authenticationAPI.login(User(null,null,email,password,null,null))
+            val loginCall = authenticationAPI.login(User(null,null,null,email,password,null,null))
             loginCall.enqueue(object: Callback<AuthResponse>{
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
 
-                    Toast.makeText(this@LoginActivity,t!!.message!!,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity,t.message!!,Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -82,10 +83,12 @@ class LoginActivity : AppCompatActivity() {
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
 
                             val token = response.body()!!.token
+                            val idCustomer=response.body()!!.dataUser!!.idCustomer
 
                             val editor = sharedPreferences.edit()
 
                             editor.putString(SHARED_PREFERENCES_FIELD_TOKEN,token)
+                            editor.putInt(SHARED_PREFERENCES_FIELD_IDCUSTOMER,idCustomer!!)
                             editor.commit()
 
                             startActivity(intent)

@@ -23,16 +23,15 @@ class HomeActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        navigateTo(navView.menu.findItem(R.id.navigation_home))
+        navigateTo(navView.menu.findItem(R.id.navigation_nurses))
     }
 
     private fun getFragmentFor(item: MenuItem): Fragment {
         return when(item.itemId) {
-            R.id.navigation_home -> HomeFragment()
             R.id.navigation_nurses -> NursesFragment()
             R.id.navigation_profile -> ProfileFragment()
-            /*R.id.navigation_favorites -> FavoritesFragment()
-            */else -> HomeFragment()
+            R.id.navigation_favorites -> HomeFragment()
+            else -> NursesFragment()
         }
     }
 

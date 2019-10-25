@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pe.edu.upc.attentionapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".controllers.activities.NurseProfileActivity"></activity>
+        <activity android:name=".controllers.activities.CardsActivity"></activity>
+        <activity
+            android:name=".controllers.activities.ContractActivity"
+            android:parentActivityName=".controllers.activities.FindNurseActivity" />
+        <activity
+            android:name=".controllers.activities.FindNurseActivity"
+            android:parentActivityName=".controllers.activities.HomeActivity" />
+        <activity android:name=".controllers.activities.NurseProfileActivity" />
         <activity android:name=".controllers.activities.HomeActivity" />
-
         <activity
             android:name=".controllers.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

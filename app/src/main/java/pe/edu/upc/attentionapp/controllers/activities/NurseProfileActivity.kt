@@ -24,9 +24,16 @@ class NurseProfileActivity : AppCompatActivity() {
             .placeholder(R.drawable.ic_user_placeholder_48dp)
             .into(ivNPImage)
 
-        tvNPName.text=nurse!!.firstName
-        tvNPLastName.text=nurse!!.lastName
+        tvNPShortName.text=nurse!!.shortName
+        tvNPDNI.text=nurse!!.codeIdentification
 
+        if(nurse.idNurseType==1){
+            tvNPNurseType.text="Licenciada(o)"
+        }else {
+            tvNPNurseType.text = "Tecnica(o)"
+        }
+        tvNPGender.text=nurse!!.gender
+        tvNPDescription.text=nurse!!.description
 
 
     }

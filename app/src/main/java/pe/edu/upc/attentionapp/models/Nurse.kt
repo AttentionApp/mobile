@@ -5,6 +5,10 @@ import java.io.Serializable
 
 
 class Nurse : Serializable {
+
+    @SerializedName("idnurse")
+    var idnurse = 0
+
     @SerializedName("first_name")
     var firstName = ""
 
