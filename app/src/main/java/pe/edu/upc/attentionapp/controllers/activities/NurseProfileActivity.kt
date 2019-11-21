@@ -34,7 +34,10 @@ class NurseProfileActivity : AppCompatActivity() {
         }
         tvNPGender.text=nurse!!.gender
         tvNPDescription.text=nurse!!.description
+    }
 
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
