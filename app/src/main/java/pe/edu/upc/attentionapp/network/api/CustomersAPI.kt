@@ -16,9 +16,6 @@ interface CustomersAPI {
     fun getCards(@Header("authorization") authHeader: String, @Path("id") id: Int):Call<CollectionResponse<Card>>
 
     @GET("customers/{id}/reservations")
-    fun getReservations(@Header("authorization") authHeader: String, @Path("id") id: Int):Call<CollectionResponse<Nurse>>
-
-
-
+    fun getReservations(@Header("authorization") authHeader: String, @Path("id") id: Int):Call<CollectionResponse<Reservation>>
 
 }

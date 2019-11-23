@@ -16,7 +16,7 @@ interface NurseAPI {
     fun filter(@Header("authorization") authHeader: String): Call<CollectionResponse<Nurse>>
 
     @GET("nurses/{id}")
-    fun findById(@Path("id") id: Int): Call<DataResponse<Nurse>>
+    fun findById(@Header("authorization") authHeader: String,@Path("id") id: Int): Call<DataResponse<Nurse>>
 
     @POST("nurses")
     fun save(@Body nurse: Nurse): Call<PostResponse>
