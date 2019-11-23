@@ -12,6 +12,7 @@ import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.adapters.NursesAdapter
 import pe.edu.upc.attentionapp.adapters.NursesFilterAdapter
 import pe.edu.upc.attentionapp.models.Nurse
+import pe.edu.upc.attentionapp.models.Reservation
 import pe.edu.upc.attentionapp.network.api.NurseAPI
 import pe.edu.upc.attentionapp.network.responses.common.CollectionResponse
 import pe.edu.upc.attentionapp.util.AttentionAppConfig
@@ -36,6 +37,9 @@ class ContractActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contract)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+
+
+
         getNursesAvailable()
         rvCONursesAvailable.layoutManager= GridLayoutManager(this,2)
 
@@ -62,8 +66,9 @@ class ContractActivity : AppCompatActivity() {
                 response: Response<CollectionResponse<Nurse>>
             ) {
                 if(response.isSuccessful){
+                    val contract = intent.extras!!.getSerializable("contract") as Reservation?
                     nurses = response.body()!!.rows
-                    adapter = NursesFilterAdapter(nurses,this@ContractActivity)
+                    adapter = NursesFilterAdapter(nurses,this@ContractActivity, contract!!)
                     rvCONursesAvailable.adapter = adapter
                 }
             }
