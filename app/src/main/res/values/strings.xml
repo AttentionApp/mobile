@@ -49,5 +49,6 @@
     <string name="bank_name">Banco 1</string>
     <string name="numero_de_cuenta_label">Numero de cuenta:</string>
     <string name="account_number">123 123456789 123</string>
+    <string name="genre">Genre</string>
 
 </resources>

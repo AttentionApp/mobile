@@ -43,8 +43,6 @@ class FindNurseActivity : AppCompatActivity() {
         numberOfHours()
         ok()
 
-
-
     }
 
     fun datePicker(){
@@ -56,6 +54,7 @@ class FindNurseActivity : AppCompatActivity() {
          btFNPickDate.setOnClickListener {
             val datePick=
                 DatePickerDialog(this,DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
+
                     tvFNDate.setText(""+mDay+"/"+(mMonth+1)+"/"+mYear)
 
             },year,month,day)
@@ -73,6 +72,7 @@ class FindNurseActivity : AppCompatActivity() {
 
             reservation.startDate=this.dateStart
             reservation.endDate=this.dateEnd
+            reservation.amount=this.amount
 
             val calendar= Calendar.getInstance()
             val tempYear=calendar.get(Calendar.YEAR)
@@ -146,11 +146,10 @@ class FindNurseActivity : AppCompatActivity() {
 
         this.dateStart=tempStartDate
         this.dateEnd=tempEndDate
+        this.amount = endHour * 20
 
     }
 
-    fun calculateAmount(){
-        amount = (startHour+endHour) - startHour
-    }
+
 }
 

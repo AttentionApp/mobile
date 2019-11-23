@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_nurses.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.adapters.NursesAdapter
@@ -45,7 +46,7 @@ class NursesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = view.context.getSharedPreferences(SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE)
         getNursesAvailable()
-        rvFNNurses.layoutManager = GridLayoutManager(view.context,2)
+        rvFNNurses.layoutManager = LinearLayoutManager(view.context)
         fbFNContract.setOnClickListener {
             val intent = Intent(context,FindNurseActivity::class.java)
             startActivity(intent)
