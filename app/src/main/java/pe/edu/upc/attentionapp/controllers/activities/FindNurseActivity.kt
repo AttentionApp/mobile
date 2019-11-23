@@ -29,6 +29,7 @@ class FindNurseActivity : AppCompatActivity() {
     private var year:Int = 0
     private var month:Int = 0
     private var day:Int = 0
+    private var amount:Int=0
 
 
 
@@ -149,7 +150,7 @@ class FindNurseActivity : AppCompatActivity() {
     }
 
     fun calculateAmount(){
-
+        amount = (startHour+endHour) - startHour
     }
 }
 
