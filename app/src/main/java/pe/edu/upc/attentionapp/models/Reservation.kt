@@ -4,22 +4,23 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
-class Reservation (
+
+class Reservation :Serializable {
     @SerializedName("idcustomer")
-    var idCustomer:Int?,
+    var idCustomer=0
 
     @SerializedName("idnurse")
-    var idNurse:Int?,
+    var idNurse=0
 
     @SerializedName("idcard")
-    var idCard :Int?,
+    var idCard=0
 
     @SerializedName("start_date")
-    var startDate: Date?,
+    var startDate: Date?=null
 
     @SerializedName("end_date")
-    var endDate: Date?,
+    var endDate: Date?=null
 
     @SerializedName("amount")
-    var amount:Int?
-)
+    var amount=0
+}

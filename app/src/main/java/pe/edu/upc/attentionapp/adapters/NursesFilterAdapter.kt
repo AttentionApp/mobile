@@ -26,7 +26,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : RecyclerView.Adapter<NursesFilterAdapter.NurseViewHolder>(){
+class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var contract:Reservation) : RecyclerView.Adapter<NursesFilterAdapter.NurseViewHolder>(){
 
 
     private lateinit var reservationAPI:ReservationAPI
@@ -35,6 +35,7 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
         val itemNurse = itemView.itemNurse
         val shortNameTextView = itemView.shortNameTextView
         val nurseImageView = itemView.nurseImageView
+        val tvGender = itemView.tvGenre
         private lateinit var sharedPreferences: SharedPreferences
 
         fun bindTo(nurse: Nurse){
@@ -42,27 +43,26 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
             val idCustomer= sharedPreferences.getInt(AttentionAppConfig.SHARED_PREFERENCES_FIELD_IDCUSTOMER,0)
             val token = sharedPreferences.getString(AttentionAppConfig.SHARED_PREFERENCES_FIELD_TOKEN,"")
             shortNameTextView.text = nurse.shortName
+            tvGender.text = nurse.gender
             Picasso
                 .get()
                 .load(nurse.thumbnailImage)
                 .placeholder(R.drawable.ic_user_placeholder_48dp)
                 .into(nurseImageView)
+
+            contract.idCustomer=idCustomer
+            contract.idNurse=nurse.idnurse
+            contract.idCard=2
             itemNurse.setOnClickListener{
 
                 val builder = AlertDialog.Builder(context)
 
-                // Set the alert dialog title
-                builder.setTitle("¿Deseas contratar ${nurse.shortName} ?")
 
-                // Display a message on alert dialog
+                builder.setTitle("¿Deseas contratar a ${nurse.shortName}?, El monto es de S/${contract.amount} ")
                 builder.setMessage("Click en sí para confirmar")
-
-                // Set a positive button and its click listener on alert dialog
                 builder.setPositiveButton("Sí"){dialog, which ->
-                    // Do something when user press the positive button
 
-
-                    val registerCall=reservationAPI.save("Bearer $token",Reservation(idCustomer,nurse.idnurse,2,null,null,null))
+                    val registerCall=reservationAPI.save("Bearer $token",contract)
 
                     registerCall.enqueue(object: Callback<PostResponse> {
                         override fun onFailure(call: Call<PostResponse>, t: Throwable) {
@@ -84,17 +84,10 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
 
                 }
 
-                // Display a negative button on alert dialog
                 builder.setNegativeButton("No"){dialog,which ->
                 }
-
-                // Finally, make the alert dialog using builder
                 val dialog: AlertDialog = builder.create()
-
-                // Display the alert dialog on app interface
                 dialog.show()
-
-
             }
         }
     }
