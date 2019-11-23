@@ -35,6 +35,7 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var con
         val itemNurse = itemView.itemNurse
         val shortNameTextView = itemView.shortNameTextView
         val nurseImageView = itemView.nurseImageView
+        val tvGender = itemView.tvGenre
         private lateinit var sharedPreferences: SharedPreferences
 
         fun bindTo(nurse: Nurse){
@@ -42,6 +43,7 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var con
             val idCustomer= sharedPreferences.getInt(AttentionAppConfig.SHARED_PREFERENCES_FIELD_IDCUSTOMER,0)
             val token = sharedPreferences.getString(AttentionAppConfig.SHARED_PREFERENCES_FIELD_TOKEN,"")
             shortNameTextView.text = nurse.shortName
+            tvGender.text = nurse.gender
             Picasso
                 .get()
                 .load(nurse.thumbnailImage)
@@ -53,7 +55,9 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var con
             contract.idCard=2
             itemNurse.setOnClickListener{
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("¿Deseas contratar ${nurse.shortName} ?")
+
+                builder.setTitle("¿Deseas contratar a ${nurse.shortName}?, El monto es de S/${contract.amount} ")
+
                 builder.setMessage("Click en sí para confirmar")
                 builder.setPositiveButton("Sí"){dialog, which ->
 

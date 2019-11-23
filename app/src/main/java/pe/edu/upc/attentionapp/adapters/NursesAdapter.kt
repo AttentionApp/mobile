@@ -17,9 +17,11 @@ class NursesAdapter(var nurses: List<Nurse>, var context: Context) : RecyclerVie
     inner class NurseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemNurse = itemView.itemNurse
         val shortNameTextView = itemView.shortNameTextView
+        val tvGender = itemView.tvGenre
         val nurseImageView = itemView.nurseImageView
         fun bindTo(nurse: Nurse){
             shortNameTextView.text = nurse.shortName
+            tvGender.text=nurse.gender
             Picasso
                 .get()
                 .load(nurse.thumbnailImage)

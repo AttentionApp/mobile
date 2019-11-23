@@ -69,6 +69,7 @@ class FindNurseActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         ok()
     }
 
+
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.mapType = GoogleMap.MAP_TYPE_NORMAL
@@ -101,6 +102,7 @@ class FindNurseActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
             return
         }
+
     }
 
     fun datePicker(){
@@ -112,7 +114,9 @@ class FindNurseActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
          btFNPickDate.setOnClickListener {
             val datePick=
                 DatePickerDialog(this,DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
-                    tvFNDate.text = ""+mDay+"/"+(mMonth+1)+"/"+mYear
+                                                                          
+                    tvFNDate.setText(""+mDay+"/"+(mMonth+1)+"/"+mYear)
+
             },year,month,day)
 
             datePick.show()
@@ -127,6 +131,8 @@ class FindNurseActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
             reservation.endDate=this.dateEnd
             reservation.latitude= this.latitude
             reservation.longitude = this.longitude
+            reservation.amount=this.amount
+
             val calendar= Calendar.getInstance()
             val tempYear=calendar.get(Calendar.YEAR)
             val tempMonth =calendar.get(Calendar.MONTH)
@@ -189,11 +195,10 @@ class FindNurseActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
         this.dateStart=tempStartDate
         this.dateEnd=tempEndDate
+        this.amount = endHour * 20
 
     }
 
-    fun calculateAmount(){
-        amount = (startHour+endHour) - startHour
-    }
+
 }
 
