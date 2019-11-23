@@ -48,22 +48,15 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
                 .placeholder(R.drawable.ic_user_placeholder_48dp)
                 .into(nurseImageView)
             itemNurse.setOnClickListener{
-
                 val builder = AlertDialog.Builder(context)
-
                 // Set the alert dialog title
                 builder.setTitle("¿Deseas contratar ${nurse.shortName} ?")
-
                 // Display a message on alert dialog
                 builder.setMessage("Click en sí para confirmar")
-
                 // Set a positive button and its click listener on alert dialog
                 builder.setPositiveButton("Sí"){dialog, which ->
                     // Do something when user press the positive button
-
-
                     val registerCall=reservationAPI.save("Bearer $token",Reservation(idCustomer,nurse.idnurse,2,null,null,null))
-
                     registerCall.enqueue(object: Callback<PostResponse> {
                         override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                             Toast.makeText(context,t.message, Toast.LENGTH_SHORT).show()

@@ -13,11 +13,9 @@ class NurseProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nurses_profile)
-
-        supportActionBar!!.setTitle("Perfil")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        val nurse = getIntent().getExtras()!!.getSerializable("nurseObject") as Nurse?
+        val nurse = intent.extras!!.getSerializable("nurseObject") as Nurse?
+        supportActionBar!!.title = "Perfil de ${nurse!!.shortName}"
 
         Picasso.get()
             .load(nurse!!.thumbnailImage)
