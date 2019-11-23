@@ -26,7 +26,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : RecyclerView.Adapter<NursesFilterAdapter.NurseViewHolder>(){
+class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var contract:Reservation) : RecyclerView.Adapter<NursesFilterAdapter.NurseViewHolder>(){
 
 
     private lateinit var reservationAPI:ReservationAPI
@@ -47,16 +47,17 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
                 .load(nurse.thumbnailImage)
                 .placeholder(R.drawable.ic_user_placeholder_48dp)
                 .into(nurseImageView)
+
+            contract.idCustomer=idCustomer
+            contract.idNurse=nurse.idnurse
+            contract.idCard=2
             itemNurse.setOnClickListener{
                 val builder = AlertDialog.Builder(context)
-                // Set the alert dialog title
                 builder.setTitle("¿Deseas contratar ${nurse.shortName} ?")
-                // Display a message on alert dialog
                 builder.setMessage("Click en sí para confirmar")
-                // Set a positive button and its click listener on alert dialog
                 builder.setPositiveButton("Sí"){dialog, which ->
-                    // Do something when user press the positive button
-                    val registerCall=reservationAPI.save("Bearer $token",Reservation(idCustomer,nurse.idnurse,2,null,null,null))
+
+                    val registerCall=reservationAPI.save("Bearer $token",contract)
                     registerCall.enqueue(object: Callback<PostResponse> {
                         override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                             Toast.makeText(context,t.message, Toast.LENGTH_SHORT).show()
@@ -71,23 +72,14 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context) : Recyc
                             else{
                                 Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
                             }
-
                         }
                     })
 
                 }
-
-                // Display a negative button on alert dialog
                 builder.setNegativeButton("No"){dialog,which ->
                 }
-
-                // Finally, make the alert dialog using builder
                 val dialog: AlertDialog = builder.create()
-
-                // Display the alert dialog on app interface
                 dialog.show()
-
-
             }
         }
     }

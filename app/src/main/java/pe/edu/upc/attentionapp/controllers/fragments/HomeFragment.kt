@@ -30,7 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment: Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
-    lateinit var adapter : NursesAdapter
     var nurse: List<Nurse> = ArrayList<Nurse>()
 
     override fun onCreateView(
@@ -46,8 +45,6 @@ class HomeFragment: Fragment() {
         sharedPreferences = view.context.getSharedPreferences(
             AttentionAppConfig.SHARED_PREFERENCES_NAME,
             Context.MODE_PRIVATE)
-        getNursesAvailable()
-        rvFRNurses.layoutManager = GridLayoutManager(view.context,2)
     }
 
 
@@ -56,29 +53,9 @@ class HomeFragment: Fragment() {
             .baseUrl(AttentionAppConfig.API_V1_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         val customersAPI = retrofit.create(CustomersAPI::class.java)
         val idCustomer= sharedPreferences.getInt(AttentionAppConfig.SHARED_PREFERENCES_FIELD_IDCUSTOMER,0)
         val token = sharedPreferences.getString(AttentionAppConfig.SHARED_PREFERENCES_FIELD_TOKEN,"")
         val nurseCall = customersAPI.getReservations("Bearer $token",idCustomer)
-
-        nurseCall.enqueue(object: Callback<CollectionResponse<Nurse>> {
-            override fun onFailure(call: Call<CollectionResponse<Nurse>>, t: Throwable) {
-                Log.d("Exception: ", t.toString())
-            }
-
-            override fun onResponse(
-                call: Call<CollectionResponse<Nurse>>,
-                response: Response<CollectionResponse<Nurse>>
-            ) {
-                if(response.isSuccessful){
-                    val context: Context = context!!
-                    nurse = response.body()!!.rows
-                    adapter = NursesAdapter(nurse,context)
-                    rvFRNurses.adapter = adapter
-                }
-            }
-
-        })
     }
 }
