@@ -41,7 +41,7 @@ class ContractActivity : AppCompatActivity() {
 
 
         getNursesAvailable()
-        rvCONursesAvailable.layoutManager= GridLayoutManager(this,2)
+        rvCONursesAvailable.layoutManager= LinearLayoutManager(this)
 
     }
 
