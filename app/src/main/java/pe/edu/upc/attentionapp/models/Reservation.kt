@@ -23,4 +23,10 @@ class Reservation :Serializable {
 
     @SerializedName("amount")
     var amount=0
+
+    @SerializedName("latitude")
+    var latitude: Double? = null
+
+    @SerializedName("longitude")
+    var longitude: Double? = null
 }

@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_nurses.*
 import kotlinx.android.synthetic.main.fragment_reservations.*
 import pe.edu.upc.attentionapp.R
 import pe.edu.upc.attentionapp.adapters.NursesAdapter
+import pe.edu.upc.attentionapp.adapters.ReservationsAdapter
 import pe.edu.upc.attentionapp.controllers.activities.FindNurseActivity
 import pe.edu.upc.attentionapp.models.Nurse
 import pe.edu.upc.attentionapp.models.Reservation
@@ -30,9 +32,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment: Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
-    lateinit var adapter : NursesAdapter
-    var nurse: List<Nurse> = ArrayList<Nurse>()
-
+    var reservations: ArrayList<Reservation> = ArrayList<Reservation>()
+    lateinit var adapter: ReservationsAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,36 +47,35 @@ class HomeFragment: Fragment() {
         sharedPreferences = view.context.getSharedPreferences(
             AttentionAppConfig.SHARED_PREFERENCES_NAME,
             Context.MODE_PRIVATE)
-        getNursesAvailable()
-        rvFRNurses.layoutManager = GridLayoutManager(view.context,2)
+        getReservations()
+        rvReservations.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
     }
 
 
-    private fun getNursesAvailable() {
+    private fun getReservations() {
         val retrofit = Retrofit.Builder()
             .baseUrl(AttentionAppConfig.API_V1_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         val customersAPI = retrofit.create(CustomersAPI::class.java)
         val idCustomer= sharedPreferences.getInt(AttentionAppConfig.SHARED_PREFERENCES_FIELD_IDCUSTOMER,0)
         val token = sharedPreferences.getString(AttentionAppConfig.SHARED_PREFERENCES_FIELD_TOKEN,"")
-        val nurseCall = customersAPI.getReservations("Bearer $token",idCustomer)
+        val reservationCall = customersAPI.getReservations("Bearer $token",idCustomer)
 
-        nurseCall.enqueue(object: Callback<CollectionResponse<Nurse>> {
-            override fun onFailure(call: Call<CollectionResponse<Nurse>>, t: Throwable) {
+        reservationCall.enqueue(object: Callback<CollectionResponse<Reservation>>{
+            override fun onFailure(call: Call<CollectionResponse<Reservation>>, t: Throwable) {
                 Log.d("Exception: ", t.toString())
             }
 
             override fun onResponse(
-                call: Call<CollectionResponse<Nurse>>,
-                response: Response<CollectionResponse<Nurse>>
+                call: Call<CollectionResponse<Reservation>>,
+                response: Response<CollectionResponse<Reservation>>
             ) {
                 if(response.isSuccessful){
                     val context: Context = context!!
-                    nurse = response.body()!!.rows
-                    adapter = NursesAdapter(nurse,context)
-                    rvFRNurses.adapter = adapter
+                    reservations = response.body()!!.rows as ArrayList<Reservation>
+                    adapter = ReservationsAdapter(reservations,context,sharedPreferences)
+                    rvReservations.adapter = adapter
                 }
             }
 

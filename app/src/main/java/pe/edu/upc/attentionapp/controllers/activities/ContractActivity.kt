@@ -37,10 +37,8 @@ class ContractActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contract)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
-
-
-
         getNursesAvailable()
+
         rvCONursesAvailable.layoutManager= LinearLayoutManager(this)
 
     }

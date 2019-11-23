@@ -48,7 +48,7 @@ class NursesFragment : Fragment() {
         getNursesAvailable()
         rvFNNurses.layoutManager = LinearLayoutManager(view.context)
         fbFNContract.setOnClickListener {
-            val intent = Intent(context,FindNurseActivity::class.java)
+            val intent = Intent(context, FindNurseActivity::class.java)
             startActivity(intent)
         }
     }

@@ -54,16 +54,14 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var con
             contract.idNurse=nurse.idnurse
             contract.idCard=2
             itemNurse.setOnClickListener{
-
                 val builder = AlertDialog.Builder(context)
 
-
                 builder.setTitle("¿Deseas contratar a ${nurse.shortName}?, El monto es de S/${contract.amount} ")
+
                 builder.setMessage("Click en sí para confirmar")
                 builder.setPositiveButton("Sí"){dialog, which ->
 
                     val registerCall=reservationAPI.save("Bearer $token",contract)
-
                     registerCall.enqueue(object: Callback<PostResponse> {
                         override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                             Toast.makeText(context,t.message, Toast.LENGTH_SHORT).show()
@@ -78,12 +76,10 @@ class NursesFilterAdapter(var nurses: List<Nurse>, var context: Context, var con
                             else{
                                 Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
                             }
-
                         }
                     })
 
                 }
-
                 builder.setNegativeButton("No"){dialog,which ->
                 }
                 val dialog: AlertDialog = builder.create()
